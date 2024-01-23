@@ -1,16 +1,7 @@
 #!/bin/zsh
 # 6.4.0 or later GMT version required
 #
-# Purpose:      Topography map for study area
-# 
-# Reference:
-# 	Prada. 2014 PhD Thesis Figure 1.1  
-# V1.0 frist script
-# V2.0 modif***
-# Alpine-Himalayan文件夹 是其他文献的区域地质图
-
-
-#!/usr/bin/env bash
+# Purpose:      Global map
 
 GEM=gmt/gem_active_faults.gmt
 gmt begin Fig
