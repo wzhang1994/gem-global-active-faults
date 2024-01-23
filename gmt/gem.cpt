@@ -1,0 +1,25 @@
+# Fault Type scale categorical color scheme
+# Refer to GEM Global Active Database (Styron & Pagani, 2020)
+#
+# wzhang
+# 2024-01-23
+#
+#-----------------------------------------------------------------------------
+# COLOR_MODEL = RGB
+# Fault Type | color | Label
+
+Sinistral	blue 	;Paleogene
+Other		green	;Other/Unknown
+Reverse	    black 	;Neogene
+Dextral	    blue	;Dextral
+Strike-Slip orange  ;Strike
+
+Normal		red 	;Quaternary
+
+oth         gray ;Geology not shown
+und        white ;Undetermined age
+H2O      skyblue ;Water
+
+B   black
+F   white
+N   skyblue
