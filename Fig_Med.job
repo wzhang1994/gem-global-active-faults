@@ -1,0 +1,12 @@
+#!/bin/zsh
+# 6.4.0 or later GMT version required
+#
+# Purpose: 复刻文献图一
+# Q:
+# gem_active_faults.gmt和gem_active_faults_harmonized.gmt的区别不清楚
+# 难以复刻文献中的图一，始终缺少一些断层
+
+GEM=gmt/gem_active_faults.gmt
+gmt begin Fig_Med
+    
+gmt end 

@@ -1,0 +1,71 @@
+#!/bin/zsh
+# 6.4.0 or later GMT version required
+#
+# Purpose: 复刻文献图一
+# Q:
+# gem_active_faults.gmt和gem_active_faults_harmonized.gmt的区别不清楚
+# 难以复刻文献中的图一，始终缺少一些断层 --> 通过查询所有的断层类别(slip_type)就明白如何补全
+
+GEM=gmt/gem_active_faults.gmt
+
+gmt begin Fig_G
+
+# GEM=gmt/gem_active_faults_harmonized.gmt
+# gmt begin Fig_G_harmonized
+
+    gmt basemap -JN0/15c -Rg -Bwsne # -Ba60
+    gmt coast -G244/243/239 -S167/194/223
+    
+    # 三种方法可选择
+    # 1. 直接绘制所有断层
+    # gmt plot $GEM -W1p,black
+    
+    # 2. 提取数据头段中不同类型的边界数据并绘图，注意以下没有包含所有数据
+    # 正断层
+    gmt convert $GEM -aI="slip_type" -S"Normal" | gmt plot -W0.5p,red -l'Normal'    
+    gmt convert $GEM -aI="slip_type" -S"Normal-Dextral" | gmt plot -W0.5p,red
+    gmt convert $GEM -aI="slip_type" -S"Normal-Sinistral" | gmt plot -W0.5p,red
+    gmt convert $GEM -aI="slip_type" -S"Normal-Strike-Slip" | gmt plot -W0.5p,red
+        gmt convert $GEM -aI="slip_type" -S"Spreading_Ridge" | gmt plot -W0.5p,red  # 大洋中脊扩张脊
+
+    # 左旋断层
+    gmt convert $GEM -aI="slip_type" -S"Sinistral" | gmt plot -W0.5p,purple -l'Sinistral' 
+    gmt convert $GEM -aI="slip_type" -S"Sinistral-Normal" | gmt plot -W0.5p,purple
+    gmt convert $GEM -aI="slip_type" -S"Sinistral-Reverse" | gmt plot -W0.5p,purple
+    gmt convert $GEM -aI="slip_type" -S"Sinistral_Transform" | gmt plot -W0.5p,purple
+
+    # 倒转断层
+    gmt convert $GEM -aI="slip_type" -S"Reverse" | gmt plot -W0.5p,black -l'Reverse'    
+    gmt convert $GEM -aI="slip_type" -S"Reverse-Dextral" | gmt plot -W0.5p,black 
+    gmt convert $GEM -aI="slip_type" -S"Reverse-Sinistral" | gmt plot -W0.5p,black 
+    gmt convert $GEM -aI="slip_type" -S"Reverse-Strike-Slip" | gmt plot -W0.5p,black 
+        gmt convert $GEM -aI="slip_type" -S"Subduction_Thrust" | gmt plot -W0.5p,black  # 俯冲带
+
+    # 右旋断层
+    gmt convert $GEM -aI="slip_type" -S"Dextral" | gmt plot -W0.5p,blue -l'Dextral'     
+    gmt convert $GEM -aI="slip_type" -S"Dextral-Normal" | gmt plot -W0.5p,blue
+    gmt convert $GEM -aI="slip_type" -S"Dextral-Oblique" | gmt plot -W0.5p,blue
+    gmt convert $GEM -aI="slip_type" -S"Dextral-Reverse" | gmt plot -W0.5p,blue
+    gmt convert $GEM -aI="slip_type" -S"Dextral_Transform" | gmt plot -W0.5p,blue
+    
+    gmt convert $GEM -aI="slip_type" -S"Strike-Slip" | gmt plot -W0.5p,yellow -l'Strike-Slip'   # 走滑断层
+ 
+    # 其他，这个类别数据文件太多了就没有绘制
+    # gmt convert $GEM -aI="slip_type" -S"Syncline" | gmt plot -W0.5p,green -l'Other'    
+
+    gmt legend -DJBR+o0.1c -F+p1p+gwhite
+    
+gmt end 
+
+
+gmt begin Fig_G_cpt
+
+    gmt basemap -JN0/15c -Rg -Bwsne # -Ba60
+    gmt coast -G244/243/239 -S167/194/223
+    # 3. 自定义cpt文件，注意没有包含所有数据
+    cpt=gmt/gem.cpt
+    gmt plot $GEM -C$cpt -aZ="slip_type" -W0.5p
+    # 设置图例属性
+    # gmt legend -DJBR+o0.1c -F+p1p+gwhite
+    
+gmt end 

@@ -2,19 +2,44 @@
 # Refer to GEM Global Active Database (Styron & Pagani, 2020)
 #
 # wzhang
-# 2024-01-23
-#
+# 2024-01-23 try to do but fail
+# 2024-03-08 the color for 'Normal', 'Reverse', 'Sinistral', 'Dextral', except 'Other'
 #-----------------------------------------------------------------------------
 # COLOR_MODEL = RGB
 # Fault Type | color | Label
 
-Sinistral	blue 	;Paleogene
-Other		green	;Other/Unknown
-Reverse	    black 	;Neogene
-Dextral	    blue	;Dextral
-Strike-Slip orange  ;Strike
+Normal		red
+Normal		red
+Normal-Dextral	red
+Normal-Sinistral	red
+Normal-Strike-Slip	red
+Spreading_Ridge	red
 
-Normal		red 	;Quaternary
+
+Reverse	black
+Reverse-Dextral	black
+Reverse-Sinistral	black
+Reverse-Strike-Slip	black
+Subduction_Thrust	black
+
+
+Dextral	blue
+Dextral-Normal	blue
+Dextral-Oblique	blue
+Dextral-Reverse	blue
+Dextral_Transform	blue
+
+
+Sinistral	purple
+Sinistral-Normal	purple
+Sinistral-Reverse	purple
+Sinistral_Transform	purple
+
+Strike-Slip	yellow
+
+#Anticline	green
+#"Blind Thrust"	green
+#Syncline	green
 
 oth         gray ;Geology not shown
 und        white ;Undetermined age
@@ -22,4 +47,5 @@ H2O      skyblue ;Water
 
 B   black
 F   white
-N   skyblue
+N   green 	
+#N   skyblue

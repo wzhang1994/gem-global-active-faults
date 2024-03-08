@@ -1,0 +1,29 @@
+# the script is
+# awk -F\| '{print $9}' gem_active_faults.gmt |sort -n | uniq > type.tmp
+
+
+Anticline
+"Blind Thrust"	# 只有一个可以放弃
+Dextral
+Dextral-Normal
+Dextral-Oblique
+Dextral-Reverse
+Dextral_Transform
+Normal
+Normal-Dextral
+Normal-Sinistral
+Normal-Strike-Slip
+Reverse
+Reverse-Dextral
+Reverse-Sinistral
+Reverse-Strike-Slip
+Sinistral
+Sinistral-Normal
+Sinistral-Reverse
+Sinistral_Transform
+slip_type	# 断层的类型
+Spreading_Ridge
+Strike-Slip
+string
+Subduction_Thrust
+Syncline
